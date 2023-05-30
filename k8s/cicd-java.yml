@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicd-java
+spec:
+  selector:
+    app: cicd-java
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-java
+  labels:
+    app: cicd-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cicd-java
+  template:
+    metadata:
+      name: cicd-java
+      labels:
+        app: cicd-java
+    spec:
+      containers:
+        - name: cicd-java
+          image: cicd-java
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
