@@ -68,7 +68,7 @@ jobs:
 
       - name: 'Az CLI Login'
         uses: azure/login@v1
-          - uses: Azure/login@v1
+
         with:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
