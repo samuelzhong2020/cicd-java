@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: github-action-role
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get","create"]
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get","create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: github-action-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: github-action-role
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: 873ebfdc-0e47-4e76-ab4b-b4ec477a6f39
