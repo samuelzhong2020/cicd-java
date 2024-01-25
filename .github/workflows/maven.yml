@@ -82,7 +82,7 @@ jobs:
       - name: ACR Login with AZ CLI
         id: image
         run: |
-          ACR_JSON=$(az acr login --name acrjay --expose-token)
+          ACR_JSON=$(az acr login --name myacrrepo538 --expose-token)
           TOKEN=$(echo $ACR_JSON | jq -r .accessToken)
           LOGINSERVER=$(echo $ACR_JSON | jq -r .loginServer)
           echo "LOGINSERVER=$LOGINSERVER" >> $GITHUB_ENV
